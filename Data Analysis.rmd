@@ -1,0 +1,33 @@
+---
+title: "Bellabeat Data Analysis"
+output: html_document
+---
+
+## Step 1: Ask
+
+Sršen asks you to analyze smart device usage data to gain insight into how consumers use non-Bellabeat smart devices. She then wants you to select one Bellabeat product to apply these insights to in your presentation. These questions will guide your analysis:
+
+1. What are some trends in smart device usage?
+2. How could these trends apply to Bellabeat customers?
+3. How could these trends help influence Bellabeat's marketing strategy?
+
+You will produce a repo with the following deliverables:
+
+1. A clear summary of the business task
+2. A description of all data sources used
+3. Documentation of any cleaning or manipulation of data
+4. A summary of your analysis
+5. Supporting visualizations and key findings
+6. Your top high-level content recommendations based on your analysis
+
+### Things to Consider:
+- Define the problem you’re trying to solve
+- Make sure you fully understand the stakeholder’s expectations
+- Focus on the actual problem and avoid any distractions
+- Collaborate with stakeholders and keep an open line of communication
+- Take a step back and see the whole situation in context
+
+**Questions to ask yourself in this step:**
+
+- What are my stakeholders saying their problems are?
+- Now that I’ve identified the issues, how can I help the stakeholders resolve their questions?
