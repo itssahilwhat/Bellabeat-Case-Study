@@ -3,6 +3,20 @@ title: "Bellabeat Data Analysis"
 output: html_document
 ---
 
+## Characters and Products
+
+### Characters
+- **Urška Sršen**: Bellabeat’s cofounder and Chief Creative Officer
+- **Sando Mur**: Mathematician and Bellabeat’s cofounder; key member of the Bellabeat executive team
+- **Bellabeat marketing analytics team**: A team of data analysts responsible for collecting, analyzing, and reporting data that helps guide Bellabeat’s marketing strategy. You joined this team six months ago and have been busy learning about Bellabeat’s mission and business goals — as well as how you, as a junior data analyst, can help Bellabeat achieve them.
+
+### Products
+- **Bellabeat app**: The Bellabeat app provides users with health data related to their activity, sleep, stress, menstrual cycle, and mindfulness habits. This data can help users better understand their current habits and make healthy decisions. The Bellabeat app connects to their line of smart wellness products.
+- **Leaf**: Bellabeat’s classic wellness tracker that can be worn as a bracelet, necklace, or clip. The Leaf tracker connects to the Bellabeat app to track activity, sleep, and stress.
+- **Time**: This wellness watch combines the timeless look of a classic timepiece with smart technology to track user activity, sleep, and stress. The Time watch connects to the Bellabeat app to provide users with insights into their daily wellness.
+- **Spring**: This is a water bottle that tracks daily water intake using smart technology to ensure that users stay hydrated throughout the day. The Spring bottle connects to the Bellabeat app to track hydration levels.
+- **Bellabeat membership**: Bellabeat offers a subscription-based membership program for users. Membership gives users 24/7 access to fully personalized guidance on nutrition, activity, sleep, health, beauty, and mindfulness based on their lifestyle and goals.
+
 ## Step 1: Ask
 
 Sršen asks you to analyze smart device usage data to gain insight into how consumers use non-Bellabeat smart devices. She then wants you to select one Bellabeat product to apply these insights to in your presentation. These questions will guide your analysis:
@@ -11,6 +25,7 @@ Sršen asks you to analyze smart device usage data to gain insight into how cons
 2. How could these trends apply to Bellabeat customers?
 3. How could these trends help influence Bellabeat's marketing strategy?
 
+### Deliverables
 You will produce a repo with the following deliverables:
 
 1. A clear summary of the business task
@@ -20,14 +35,111 @@ You will produce a repo with the following deliverables:
 5. Supporting visualizations and key findings
 6. Your top high-level content recommendations based on your analysis
 
-### Things to Consider:
+### Things to Consider
 - Define the problem you’re trying to solve
 - Make sure you fully understand the stakeholder’s expectations
 - Focus on the actual problem and avoid any distractions
 - Collaborate with stakeholders and keep an open line of communication
 - Take a step back and see the whole situation in context
 
-**Questions to ask yourself in this step:**
-
+### Questions to Ask Yourself in This Step:
 - What are my stakeholders saying their problems are?
 - Now that I’ve identified the issues, how can I help the stakeholders resolve their questions?
+
+## Key Tasks
+1. Identify the business task
+2. Consider key stakeholders
+
+## Deliverable
+A clear statement of the business task
+
+## Step 2: Prepare
+
+Sršen encourages you to use public data that explores smart device users’ daily habits. She points you to a specific dataset:
+
+- [**FitBit Fitness Tracker Data**](https://www.kaggle.com/datasets/arashnic/fitbit) (CC0: Public Domain, dataset made available through Mobius): This Kaggle dataset contains personal fitness tracker data from Fitbit users. These eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information about daily activity, steps, and heart rate that can be used to explore users’ habits.
+
+Sršen tells you that this dataset might have some limitations and encourages you to consider adding another dataset to help address those limitations as you begin to work more with this data.
+
+
+#### Guiding Questions
+1. **Where is your data stored?**
+    The data is stored on Kaggle, a popular platform for sharing datasets. Specifically, it can be found on the [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit) page. You can download the dataset directly from Kaggle to your local machine or cloud storage, depending on where you are working.
+
+2. **How is the data organized? Is it in long or wide format?**
+    The dataset is likely organized in **wide format**, where each column represents a specific feature (e.g., `steps`, `heart_rate`, `activity_level`) and each row represents a time series data entry (such as a day's worth of data for a user). In general, Fitbit datasets from platforms like this are stored in this format to make it easy to analyze time-based data for individual users or groups of users.
+
+3. **Are there issues with bias or credibility in this data? Does your data ROCCC?**
+   - **Bias:** Since the data is from Fitbit users who opted to share their information, it could be biased toward people who are already health-conscious or who are more active. The dataset may not represent the general population, which could affect the generalizability of any insights derived.
+   - **Credibility:** The data comes from a reputable source (Fitbit users who consented to share their data), which enhances its credibility. However, users might not always use the device consistently or might have different interpretations of tracking features.
+   - **ROCCC (Reliable, Original, Complete, Current, and Cited):** This dataset is **reliable** (from Fitbit), **original** (personal data collected through Fitbits), **complete** (contains various metrics for activity, sleep, heart rate), **current** (as of when it was last uploaded), and **cited** (available on Kaggle with proper attribution).
+
+4. **How are you addressing licensing, privacy, security, and accessibility?**
+   - **Licensing:** The dataset is available under the **CC0: Public Domain** license, which means it can be freely used without restrictions.
+   - **Privacy:** The dataset does not contain personally identifiable information, as users have consented to provide fitness and activity data anonymously. It's essential to ensure that privacy concerns are addressed by not sharing any personal or sensitive data.
+   - **Security:** The data itself does not present security risks, but you should store the dataset in a secure location (local machine or cloud with appropriate encryption).
+   - **Accessibility:** The dataset is publicly accessible on Kaggle, and users can download it with a Kaggle account. It's essential to ensure that any findings and analyses are shared in an accessible way for stakeholders and team members.
+
+5. **How did you verify the data’s integrity?**
+    The dataset's integrity can be verified by:
+        - **Checking the source**: Confirming that the data comes from a reliable platform like Kaggle and is maintained by a reputable user or organization.
+        - **Ensuring data consistency**: Analyzing if there are missing values, duplicates, or any obvious errors in the data entries (e.g., negative step counts, impossible heart rate values).
+        - **Cross-referencing with other sources**: If needed, you can verify some of the patterns or values by comparing them with other publicly available Fitbit datasets or reports to ensure consistency.
+
+6. **How does it help you answer your question?**
+    This dataset is directly relevant to answering your business task since it provides detailed data on **user activity**, **sleep patterns**, and **heart rate**, which are crucial aspects of wellness tracked by Fitbit devices. By analyzing this data, you can identify trends in smart device usage, particularly focusing on the behavior of users related to their health and wellness. These insights can then be applied to Bellabeat’s products like the Leaf, Time, and Spring, helping to inform marketing strategies and product development.
+
+7. **Are there any problems with the data?**
+    Possible issues with the data might include:
+        - **Incomplete or missing data**: Users might not have fully utilized their devices or might have data gaps.
+        - **Inconsistent usage**: Users may not consistently wear or use their devices, leading to uneven data for certain days.
+        - **Limited data on non-Bellabeat users**: Since this data only involves Fitbit users, it does not capture insights from people using other types of smart devices, which might limit the generalizability of the findings for Bellabeat’s diverse customer base.
+
+#### Key Tasks
+1. **Download data and store it appropriately.**
+2. **Identify how it’s organized.**
+3. **Sort and filter the data.**
+4. **Determine the credibility of the data.**
+
+```{r}
+install.packages("tidyverse")
+library(tidyverse)
+library(readr)
+```
+
+```{r}
+# FitaBase Data 3.12.16-4.11.16
+activity <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/dailyActivity_merged.csv")
+heartrate <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/heartrate_seconds_merged.csv")
+hourly_calories <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlyCalories_merged.csv")
+hourly_intensities <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlyIntensities_merged.csv")
+hourly_steps <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/hourlySteps_merged.csv")
+minutes_calories <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/minuteCaloriesNarrow_merged.csv")
+minutes_intensity <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/minuteIntensitiesNarrow_merged.csv")
+minutes_mets <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/minuteMETsNarrow_merged.csv")
+minutes_steps <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/minuteStepsNarrow_merged.csv")
+minutes_sleep <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/minuteSleep_merged.csv")
+weight_log <- read_csv("Datasets/mturkfitbit_export_3.12.16-4.11.16/Fitabase Data 3.12.16-4.11.16/weightLogInfo_merged.csv")
+```
+```{r}
+# FitBit Data 4.12.16-5.12.16
+daily_activity <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv")
+daily_caloires <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/dailyCalories_merged.csv")
+daily_intensities <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/dailyIntensities_merged.csv")
+daily_steps <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/dailySteps_merged.csv")
+heartrate_seconds <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/heartrate_seconds_merged.csv")
+hourly_calories2 <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlyCalories_merged.csv")
+hourly_intensities2 <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlyIntensities_merged.csv")
+hourly_steps2 <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/hourlySteps_merged.csv")
+minutes_calories_narrow <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteCaloriesNarrow_merged.csv")
+minutes_calories_wide <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteIntensitiesWide_merged.csv")
+minutes_intensity_narrow <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteIntensitiesNarrow_merged.csv")
+minutes_intensity_wide <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteIntensitiesWide_merged.csv")
+minutes_mets_narrow <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteMETsNarrow_merged.csv")
+minutes_steps_narrow <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteStepsNarrow_merged.csv")
+minutes_steps_wide <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteStepsWide_merged.csv")
+minutes_sleep <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/minuteSleep_merged.csv")
+weight_log2 <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/weightLogInfo_merged.csv")
+day_sleep <- read_csv("Datasets/mturkfitbit_export_4.12.16-5.12.16/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv")
+```
+
