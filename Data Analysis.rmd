@@ -218,6 +218,9 @@ cat("Missing values in sleep:", sum(is.na(sleep)), "\n")
 # Check for empty rows
 empty_rows_activity <- daily_activity[rowSums(is.na(daily_activity)) == ncol(daily_activity), ]
 empty_rows_calories <- daily_calories[rowSums(is.na(daily_calories)) == ncol(daily_calories), ]
+empty_rows_intensities <- daily_intensities[rowSums(is.na(daily_intensities)) == ncol(daily_intensities), ]
+empty_rows_heartrate <- heartrate[rowSums(is.na(heartrate)) == ncol(heartrate), ]
+empty_rows_weight <- weight_log[rowSums(is.na(weight_log)) == ncol(weight_log), ]
 empty_rows_sleep <- sleep[rowSums(is.na(sleep)) == ncol(sleep), ]
 
 # Check for empty columns
@@ -230,11 +233,10 @@ empty_columns_sleep <- sleep[, colSums(is.na(sleep)) == nrow(sleep)]
 # Check for duplicates
 duplicates_daily_activity <- daily_activity[duplicated(daily_activity), ]
 duplicates_daily_calories <- daily_calories[duplicated(daily_calories), ]
-duplicates_daily_sleep <- sleep[duplicated(sleep), ]
+duplicates_sleep <- sleep[duplicated(sleep), ]
 
 # Removing duplicates
 sleep <- sleep[!duplicated(sleep), ]
-
 
 # Confirm duplicates removed
 duplicates_daily_sleep <- sleep[duplicated(sleep), ]
@@ -278,18 +280,18 @@ colnames(sleep)
 
 ```{r}
 # Summarize key metrics
-daily_activity_clean <- daily_activity %>%
-summarise(participants = n_distinct(id))
-daily_calories_clean <- daily_calories %>%
-summarise(participants = n_distinct(id))
-daily_intensities_clean <- daily_intensities %>%
-summarise(participants = n_distinct(id))
-heartrate_clean <- heartrate %>%
-summarise(participants = n_distinct(id))
-weight_log_clean <- weight_log %>%
-summarise(participants = n_distinct(id))
-sleep_clean <- sleep %>%
-summarise(participants = n_distinct(id))
+daily_activity %>%
+  summarise(participants = n_distinct(id))
+daily_calories %>%
+  summarise(participants = n_distinct(id))
+daily_intensities %>%
+  summarise(participants = n_distinct(id))
+heartrate %>%
+  summarise(participants = n_distinct(id))
+weight_log %>%
+  summarise(participants = n_distinct(id))
+sleep %>%
+  summarise(participants = n_distinct(id))
 ```
 
 
@@ -311,6 +313,12 @@ weight_log %>%
 select(weight_kg, fat) %>%
 summary()
 ```
+
+
+```{r}
+
+```
+
 
 ### Key findings from this analysis :
 
@@ -355,8 +363,12 @@ ggplot(data=daily_activity_clean, aes(x=total_steps, y=sedentary_minutes)) + geo
 - You might expect it to be almost completely linear - are there any unexpected trends?
 
 ```{r}
-ggplot(data=sleep_day, aes(x=TotalMinutesAsleep, y=TotalTimeInBed)) + geom_point()
+ggplot(data=sleep_clean, aes(x=total_minutes_asleep, y=total_time_in_bed)) + geom_point()
 ```
 
 - What could these trends tell you about how to help market this product? Or areas where you might want to explore further?
 
+```{r}
+combined_data <- merge(sleep_clean, daily_activity_clean, by="id")
+n_distinct(combined_data$Id)
+```
