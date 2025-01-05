@@ -249,10 +249,10 @@ cat("Empty columns in sleep:", sum(colSums(is.na(sleep)) == nrow(sleep)), "\n")
 
 ```{r}
 # Calculate the proportion of missing values in each column
-missing_proportion <- colSums(is.na(weight_log)) / nrow(weight_log)
-
-# Drop columns where the proportion of missing values is greater than 50%
-weight_log <- weight_log[, missing_proportion <= 0.5]
+# missing_proportion <- colSums(is.na(weight_log)) / nrow(weight_log)
+#
+# # Drop columns where the proportion of missing values is greater than 50%
+# weight_log <- weight_log[, missing_proportion <= 0.5]
 ```
 
 
@@ -288,11 +288,6 @@ daily_steps$ActivityDay <- as.Date(daily_steps$ActivityDay, format = "%m/%d/%Y")
 heartrate$Time <- as.Date(heartrate$Time, format = "%m/%d/%Y")
 weight_log$Date <- as.Date(weight_log$Date, format = "%m/%d/%Y")
 sleep$SleepDay <- as.Date(sleep$SleepDay, format = "%m/%d/%Y")
-
-# Confirm successful conversion
-str(daily_activity)
-str(daily_calories)
-str(sleep)
 ```
 
 
@@ -301,6 +296,7 @@ str(sleep)
 daily_activity <- daily_activity %>% clean_names()
 daily_calories <- daily_calories %>% clean_names()
 daily_intensities <- daily_intensities %>% clean_names()
+daily_steps <- daily_steps %>% clean_names()
 heartrate <- heartrate %>% clean_names()
 weight_log <- weight_log %>% clean_names()
 sleep <- sleep %>% clean_names()
@@ -324,6 +320,8 @@ daily_calories %>%
   summarise(participants = n_distinct(id))
 daily_intensities %>%
   summarise(participants = n_distinct(id))
+daily_steps %>%
+    summarise(participants = n_distinct(id))
 heartrate %>%
   summarise(participants = n_distinct(id))
 weight_log %>%
@@ -348,13 +346,13 @@ sleep %>%
 select(total_sleep_records, total_minutes_asleep, total_time_in_bed) %>%
 summary()
 weight_log %>%
-select(weight_kg, fat) %>%
+select(weight_kg, bmi) %>%
 summary()
 ```
 
 
 ```{r}
-
+colnames(daily_steps)
 ```
 
 
@@ -386,20 +384,26 @@ Now that your data is stored appropriately and has been prepared for analysis, s
 A summary of your analysis.
 
 ### Merging some data :¶
-Before beginning to visualize the data, I'm going to merge two data sets : Activity and Sleep data on columns Id. Note that there are more participant Ids in the Activity dataset than in the Sleep dataset. So if I use the merge option inner_joint, then I will have the number of participants from the Sleep data set.
+With the data cleaned and prepared, the next step is to integrate the three datasets into a single unified table.We merge the datasets to create a unified table that combines the key information from daily_activity, daily_steps, and daily_sleep. This integration enables a comprehensive analysis by linking activity, step count, and sleep data for each user on a specific date. By merging these datasets, we can identify patterns, correlations, and trends across multiple aspects of users' behavior, which would not be possible if the data remained fragmented.
+
+First, the daily_activity and daily_steps datasets are merged using the id and their respective date columns (activity_date and activity_day)..
 
 Take a look :
 
 ```{r}
-combined_data <- merge(sleep, daily_activity, by="id")
-n_distinct(combined_data$id)
+activity_steps_merged <- merge(daily_activity, daily_steps,
+                               by.x = c("id", "activity_date"),
+                               by.y = c("id", "activity_day"),
+                               all = TRUE)
 ```
 
-So for analysis, I will consider using 'outer_join' to keep all participants in the in the dataset. And I can do that by adding in my code chunk the extra argument all=TRUE.
+Next, the resulting merged dataset is combined with the daily_sleep dataset using the id and date columns (activity_date and sleep_day). This step integrates all three datasets into a unified table for analysis.
 
 ```{r}
-combined_data_outer <- merge(sleep, daily_activity, by="id", all = TRUE)
-n_distinct(combined_data_outer$id)
+merged_data<-merge(activity_steps_merged, sleep,
+                   by.x=c("id","activity_date"),
+                   by.y=c("id","sleep_day"),
+                   all=TRUE)
 ```
 
 
@@ -407,28 +411,6 @@ n_distinct(combined_data_outer$id)
 - How could this help inform the customer segments that we can market to?
 - E.g. position this more as a way to get started in walking more?
 - Or to measure steps that you're already taking?
-
-
-```{r}
-ggplot(data=daily_activity, aes(x=total_steps, y=sedentary_minutes)) + geom_point() +
-  geom_smooth() +
-    labs(title="Total Steps vs. Sedentary Minutes")
-```
-
-- What's the relationship between minutes asleep and time in bed?
-- You might expect it to be almost completely linear - are there any unexpected trends?
-
-- The data shows a negative relationship between Steps and Sedentary time. This means that the more time someone spends sitting, the fewer steps they take during the day. The company should focus more on marketing to people with high Sedentary time and encourage them to start walking more and track their steps.
-
-```{r}
-ggplot(data=sleep, aes(x=total_minutes_asleep, y=total_time_in_bed)) + geom_point() +
-  geom_smooth() +
-    labs(title="Total Minutes Asleep vs. Total Time in Bed Minutes")
-```
-
-- What could these trends tell you about how to help market this product? Or areas where you might want to explore further?
-
-- There is also a strong connection between Minutes Asleep and Time in Bed, with a nearly straight-line trend. To help users sleep better, the company could send reminders to go to sleep.
 
 ## Step 5: Share
 
@@ -459,3 +441,41 @@ Supporting visualizations and key findings.
 3. Create your data visualization, remembering that contrast should be used to draw your audience’s attention to the most important insights. Use artistic principles including size, color, and shape.
 4. Ensure clear meaning through the proper use of common elements, such as headlines, subtitles, and labels.
 5. Refine your data visualization by applying deep attention to detail.
+
+```{r}
+ggplot(data=daily_activity, aes(x=total_steps, y=sedentary_minutes)) + geom_point() +
+  geom_smooth() +
+  labs(title="Total Steps vs. Sedentary Minutes")
+```
+
+- What's the relationship between minutes asleep and time in bed?
+- You might expect it to be almost completely linear - are there any unexpected trends?
+
+- The data shows a negative relationship between Steps and Sedentary time. This means that the more time someone spends sitting, the fewer steps they take during the day. The company should focus more on marketing to people with high Sedentary time and encourage them to start walking more and track their steps.
+
+```{r}
+ggplot(data=sleep, aes(x=total_minutes_asleep, y=total_time_in_bed)) + geom_point() +
+  geom_smooth() +
+  labs(title="Total Minutes Asleep vs. Total Time in Bed Minutes")
+```
+
+- What could these trends tell you about how to help market this product? Or areas where you might want to explore further?
+
+- There is also a strong connection between Minutes Asleep and Time in Bed, with a nearly straight-line trend. To help users sleep better, the company could send reminders to go to sleep.
+
+```{r}
+ggplot(data=daily_activity, aes(x=total_steps, y=calories)) + geom_point() +
+  geom_smooth() +
+  labs(title="Total Steps vs. Calories Burned")
+```
+
+
+```{r}
+ggplot(data=merged_data, aes(x=total_minutes_asleep, y=sedentary_minutes)) +
+  geom_point(color='darkblue') + geom_smooth() +
+  labs(title="Minutes Asleep vs. Sedentary Minutes")
+```
+
+- Here we can clearly see the negative relationship between Sedentary Minutes and Sleep time.
+- As an idea: if Bellabeat users want to improve their sleep, Bellabeat app can recommend reducing sedentary time.
+- Keep in mind that we need to support this insights with more data, because correlation between some data doesn’t mean causation.
