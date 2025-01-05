@@ -182,9 +182,8 @@ str(sleep)
 glimpse(sleep)
 ```
 
-## Step 3: Process
 
-Then, process your data for analysis using the following Case Study Roadmap as a guide:
+## Step 3: Process
 
 ### Guiding Questions
 - What tools are you choosing and why?
@@ -204,60 +203,160 @@ Documentation of any cleaning or manipulation of data.
 
 ---
 
-## Follow These Steps
-
-1. Download the dataset.
-2. Unzip the files.
-3. Create a folder on your desktop or Drive to house the files. Use appropriate file-naming conventions. If you need a refresher on file-naming conventions, you can revisit the “All about file naming” video or the “Organization guidelines” reading.
-4. Upload the data to a tool of your choice. For a refresher on some different ways to do this, feel free to reference any of the following resources on how to get started in the following tools (proceed to next page):
-
-### Spreadsheets
-- **Importing data from spreadsheets**: This video from Course 3 will guide you through the steps you will follow to import data into your spreadsheet. This is useful if you want to perform your cleaning and analysis with spreadsheets.
-
-### SQL
-- **Uploading a CSV file in BigQuery**: These step-by-step instructions will guide you through the process of uploading your CSV file into BigQuery so that you can start working with your data in SQL.
-- **Cleaning string variables using SQL**: This video from Course 4 covers some key cleaning techniques for string data in SQL.
-
-### R
-- **Data import basics**: This reading from Course 7 will review importing data into R so that you can begin cleaning and analyzing it. If you are planning to use R for your case study, this is a useful starting point.
-- **Cleaning up with the basics**: This video from Course 7 will guide you through some basic R cleaning functions that you will need to process your data for analysis.
-- **Even more data-cleaning techniques**: This video from Course 4 covers even more techniques you can use to clean your data and prepare it for analysis.
-- **Advanced data-cleaning functions part 1 and part 2**: These videos cover more advanced cleaning functions that are a great refresher as you begin to work more closely.
-- **Transforming data**: This video from Course 7 covers transforming data in R so that it is organized and formatted for easy analysis.
-
-5. Proceed to the analyze step.
-
-If you like, continue working with the data to better familiarize yourself and perhaps even identify new approaches to answering the business questions.
-
+### Data Cleaning Process
 ```{r}
-skim_without_charts(daily_activity)
-skim_without_charts(daily_calories)
-skim_without_charts(daily_intensities)
-skim_without_charts(heartrate)
-skim_without_charts(weight_log)
-skim_without_charts(sleep)
+# Total missing values
+cat("Missing values in daily_activity:", sum(is.na(daily_activity)), "\n")
+cat("Missing values in daily_calories:", sum(is.na(daily_calories)), "\n")
+cat("Missing values in daily_intensities:", sum(is.na(daily_intensities)), "\n")
+cat("Missing values in heartrate:", sum(is.na(heartrate)), "\n")
+cat("Missing values in weight_log:", sum(is.na(weight_log)), "\n")
+cat("Missing values in sleep:", sum(is.na(sleep)), "\n")
 ```
 
 ```{r}
+# Check for empty rows
+empty_rows_activity <- daily_activity[rowSums(is.na(daily_activity)) == ncol(daily_activity), ]
+empty_rows_calories <- daily_calories[rowSums(is.na(daily_calories)) == ncol(daily_calories), ]
+empty_rows_sleep <- sleep[rowSums(is.na(sleep)) == ncol(sleep), ]
+
+# Check for empty columns
+empty_columns_activity <- daily_activity[, colSums(is.na(daily_activity)) == nrow(daily_activity)]
+empty_columns_calories <- daily_calories[, colSums(is.na(daily_calories)) == nrow(daily_calories)]
+empty_columns_sleep <- sleep[, colSums(is.na(sleep)) == nrow(sleep)]
+```
+
+```{r}
+# Check for duplicates
+duplicates_daily_activity <- daily_activity[duplicated(daily_activity), ]
+duplicates_daily_calories <- daily_calories[duplicated(daily_calories), ]
+duplicates_daily_sleep <- sleep[duplicated(sleep), ]
+
+# Removing duplicates
+sleep <- sleep[!duplicated(sleep), ]
+
+
+# Confirm duplicates removed
+duplicates_daily_sleep <- sleep[duplicated(sleep), ]
+cat("Number of duplicate rows in sleep after removal:", nrow(duplicates_daily_sleep), "\n")
+```
+
+```{r}
+# Inspect structure of data
+str(daily_activity)
+str(daily_calories)
+str(sleep)
+
+# Convert character columns to date
+daily_activity$ActivityDate <- as.Date(daily_activity$ActivityDate, format = "%m/%d/%Y")
+daily_calories$ActivityDay <- as.Date(daily_calories$ActivityDay, format = "%m/%d/%Y")
+sleep$SleepDay <- as.Date(sleep$SleepDay, format = "%m/%d/%Y")
+
+# Confirm successful conversion
+str(daily_activity)
+str(daily_calories)
+str(sleep)
+```
+
+
+```{r}
+# Cleaning column names
+daily_activity <- daily_activity %>% clean_names()
+daily_calories <- daily_calories %>% clean_names()
+daily_intensities <- daily_intensities %>% clean_names()
+heartrate <- heartrate %>% clean_names()
+weight_log <- weight_log %>% clean_names()
+sleep <- sleep %>% clean_names()
+```
+
+```{r}
+# View updated column names
+colnames(daily_activity)
+colnames(daily_calories)
+colnames(sleep)
+```
+
+```{r}
+# Summarize key metrics
 daily_activity_clean <- daily_activity %>%
-    clean_names()
+summarise(participants = n_distinct(id))
 daily_calories_clean <- daily_calories %>%
-    clean_names()
+summarise(participants = n_distinct(id))
 daily_intensities_clean <- daily_intensities %>%
-    clean_names()
+summarise(participants = n_distinct(id))
 heartrate_clean <- heartrate %>%
-    clean_names()
+summarise(participants = n_distinct(id))
 weight_log_clean <- weight_log %>%
-    clean_names()
+summarise(participants = n_distinct(id))
 sleep_clean <- sleep %>%
-    clean_names()
+summarise(participants = n_distinct(id))
 ```
 
+
 ```{r}
-daily_activity_clean$activity_date <- as.Date(daily_activity_clean$activity_date)
-daily_calories_clean$activity_date <- as.Date(daily_calories_clean$activity_date)
-daily_intensities_clean$activity_date <- as.Date(daily_intensities_clean$activity_date)
-heartrate_clean$datetime <- as.POSIXct(heartrate_clean$datetime, format = "%Y-%m-%d %H:%M:%S")
-weight_log_clean$log_date <- as.Date(weight_log_clean$log_date)
-sleep_clean$sleep_day <- as.Date(sleep_clean$sleep_day)
+# Key descriptive statistics
+daily_activity %>%
+select(total_steps, total_distance, sedentary_minutes, calories) %>%
+summary()
+daily_intensities %>%
+select(very_active_minutes, lightly_active_minutes, fairly_active_minutes, sedentary_minutes) %>%
+summary()
+daily_calories %>%
+select(calories) %>%
+summary()
+sleep %>%
+select(total_sleep_records, total_minutes_asleep, total_time_in_bed) %>%
+summary()
+weight_log %>%
+select(weight_kg, fat) %>%
+summary()
 ```
+
+### Key findings from this analysis :
+
+- The average sedentary time is too high (more than 16 hours). And definitely needs to be reduced with a good marketing strategy.
+- The majority of the participants are lightly active. With a high sedentary time.
+- Participants sleep 1 time for an average of 7 hours.
+- Average total steps per day (which is 7638) is a little bit less than recommended by the CDC. According to the CDC research, taking 8,000 steps per day was associated with a 51% lower risk for all-cause mortality (or death from all causes). And taking 12,000 steps per day was associated with a 65% lower risk compared with taking 4,000 steps.
+
+## Step-4 Analyze
+
+Now that your data is stored appropriately and has been prepared for analysis, start putting it to work. Use the following Case Study Roadmap as a guide:
+
+### Guiding Questions
+- How should you organize your data to perform analysis on it?
+- Has your data been properly formatted?
+- What surprises did you discover in the data?
+- What trends or relationships did you find in the data?
+- How will these insights help answer your business questions?
+
+### Key Tasks
+1. Aggregate your data so it’s useful and accessible.
+2. Organize and format your data.
+3. Perform calculations.
+4. Identify trends and relationships.
+
+### Deliverable
+A summary of your analysis.
+
+---
+
+- What's the relationship between steps taken in a day and sedentary minutes?
+- How could this help inform the customer segments that we can market to?
+- E.g. position this more as a way to get started in walking more?
+- Or to measure steps that you're already taking?
+
+
+```{r}
+ggplot(data=daily_activity_clean, aes(x=total_steps, y=sedentary_minutes)) + geom_point()
+```
+
+- What's the relationship between minutes asleep and time in bed?
+- You might expect it to be almost completely linear - are there any unexpected trends?
+
+```{r}
+ggplot(data=sleep_day, aes(x=TotalMinutesAsleep, y=TotalTimeInBed)) + geom_point()
+```
+
+- What could these trends tell you about how to help market this product? Or areas where you might want to explore further?
+
