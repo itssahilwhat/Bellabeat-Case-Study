@@ -3,104 +3,150 @@ title: "Bellabeat Data Analysis"
 output: html_document
 ---
 
-## Characters and Products
+# Introduction
 
-### Characters
-- **Urška Sršen**: Bellabeat’s cofounder and Chief Creative Officer
-- **Sando Mur**: Mathematician and Bellabeat’s cofounder; key member of the Bellabeat executive team
-- **Bellabeat marketing analytics team**: A team of data analysts responsible for collecting, analyzing, and reporting data that helps guide Bellabeat’s marketing strategy. You joined this team six months ago and have been busy learning about Bellabeat’s mission and business goals — as well as how you, as a junior data analyst, can help Bellabeat achieve them.
+Bellabeat is a health-focused company founded in 2013 that manufactures smart wellness products for women. Their products and app collect data on activity, stress, sleep, and health, empowering women to make informed decisions about their wellness. With its growing potential, Bellabeat aims to expand its presence in the smart device market. Since 2016, Bellabeat has marketed its products through digital channels like Instagram, Facebook, YouTube, Twitter, and Google Search.
 
-### Products
-- **Bellabeat app**: The Bellabeat app provides users with health data related to their activity, sleep, stress, menstrual cycle, and mindfulness habits. This data can help users better understand their current habits and make healthy decisions. The Bellabeat app connects to their line of smart wellness products.
-- **Leaf**: Bellabeat’s classic wellness tracker that can be worn as a bracelet, necklace, or clip. The Leaf tracker connects to the Bellabeat app to track activity, sleep, and stress.
-- **Time**: This wellness watch combines the timeless look of a classic timepiece with smart technology to track user activity, sleep, and stress. The Time watch connects to the Bellabeat app to provide users with insights into their daily wellness.
-- **Spring**: This is a water bottle that tracks daily water intake using smart technology to ensure that users stay hydrated throughout the day. The Spring bottle connects to the Bellabeat app to track hydration levels.
-- **Bellabeat membership**: Bellabeat offers a subscription-based membership program for users. Membership gives users 24/7 access to fully personalized guidance on nutrition, activity, sleep, health, beauty, and mindfulness based on their lifestyle and goals.
+# Business Task
 
-## Step 1: Ask
+Bellabeat’s goal is to analyze how users interact with non-Bellabeat smart devices. The insights will help inform strategies to improve Bellabeat’s marketing and customer engagement. The specific questions to address are:
 
-Sršen asks you to analyze smart device usage data to gain insight into how consumers use non-Bellabeat smart devices. She then wants you to select one Bellabeat product to apply these insights to in your presentation. These questions will guide your analysis:
+1. What are the current trends in smart device usage?
+2. How can these trends benefit Bellabeat customers?
+3. How can these trends improve Bellabeat’s marketing strategy?
 
-1. What are some trends in smart device usage?
-2. Who are the main stakeholders?
-3. How could these trends apply to Bellabeat customers?
-4. How could these trends help influence Bellabeat's marketing strategy?
+# Stakeholders
 
-### Deliverables
-You will produce a repo with the following deliverables:
+- **Urška Sršen**: Cofounder and Chief Creative Officer of Bellabeat.
+- **Sando Mur**: Cofounder and mathematician; part of the executive team.
+- **Bellabeat Marketing Analytics Team**: Responsible for analyzing and reporting data to guide marketing strategies.
 
-1. A clear summary of the business task
-2. A description of all data sources used
-3. Documentation of any cleaning or manipulation of data
-4. A summary of your analysis
-5. Supporting visualizations and key findings
-6. Your top high-level content recommendations based on your analysis
+# Bellabeat Products
 
-### Things to Consider
-- Define the problem you’re trying to solve
-- Make sure you fully understand the stakeholder’s expectations
-- Focus on the actual problem and avoid any distractions
-- Collaborate with stakeholders and keep an open line of communication
-- Take a step back and see the whole situation in context
+- **Bellabeat App**: Tracks user activity, sleep, stress, menstrual cycle, and mindfulness habits. Connects to Bellabeat devices for personalized wellness insights.
+- **Leaf**: A wellness tracker worn as a bracelet, necklace, or clip. Tracks activity, sleep, and stress.
+- **Time**: A smart wellness watch that tracks activity, sleep, and stress with a classic timepiece design.
+- **Spring**: A smart water bottle that monitors daily hydration levels and connects to the app.
+- **Bellabeat Membership**: A subscription offering personalized guidance on health, nutrition, sleep, and mindfulness.
 
-### Questions to Ask Yourself in This Step:
-- What are my stakeholders saying their problems are?
-- Now that I’ve identified the issues, how can I help the stakeholders resolve their questions?
+# Deliverables
+
+You will create a well-documented analysis that includes:
+
+1. **Business Task Summary**: A clear explanation of the task.
+2. **Data Sources Description**: Details of the data used for analysis.
+3. **Data Cleaning and Preparation**: Documentation of how the data was cleaned or transformed.
+4. **Analysis Summary**: Key insights from the data.
+5. **Visualizations and Findings**: Graphs, charts, or other visual representations supporting the analysis.
+6. **Recommendations**: High-level suggestions based on the findings.
+
+# Key Considerations
+
+- Understand the stakeholders' expectations and the problems they want to address.
+- Focus on solving the business task and avoid unnecessary distractions.
+- Collaborate with stakeholders and maintain clear communication throughout the process.
+- Step back to see the broader context of the situation.
+
+# Questions to Guide the Process
+
+1. What challenges or questions do stakeholders need answers to?
+2. How can the analysis help solve these problems or guide decision-making?
+
+# Key Tasks
+
+1. Define the business task.
+2. Identify the key stakeholders and their expectations.
+
+# Deliverable
+
+Provide a concise and clear statement summarizing the business task and its objectives.
+
+# Step 2: Prepare
+
+## Data Source
+
+For this analysis, I used the following public dataset:
+[**FitBit Fitness Tracker Data**](https://www.kaggle.com/datasets/arashnic/fitbit) (CC0: Public Domain, dataset made available through Mobius).
+
+This dataset contains personal health data from **30 Fitbit users**, who consented to submit their personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes data about daily activity, steps, and heart rate that can be used to explore users’ habits.
+
+**Key Details:**
+- A total of **18 CSV files** were downloaded and stored properly for this analysis.
+- The dataset includes various metrics that provide insights into daily activity, sleep patterns, and health tracking.
+
+---
+
+## ROCCC Analysis
+
+The ROCCC framework was applied to evaluate the dataset:
+
+- **Reliable:** Low — The data was collected from users without demographic information, which might affect its reliability.
+- **Originality:** Low — The data was collected from third-party Amazon Mechanical Turk users, limiting its originality.
+- **Comprehensive:** High — The dataset contains a broad range of personal health metrics, enabling the answering of business questions.
+- **Current:** Low — The data was collected between **03.12.2016–05.12.2016**, making it outdated for current trend analysis.
+- **Cited:** High — The dataset source is well-documented and publicly available on Kaggle.
+
+---
+
+## Guiding Questions
+
+### 1. **Where is your data stored?**
+The data is stored on Kaggle, a popular platform for sharing datasets. It can be downloaded from the [FitBit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit) page to local machines or cloud storage.
+
+### 2. **How is the data organized?**
+The data is organized in **wide format**, where:
+- Each column represents a specific feature (e.g., `steps`, `heart_rate`, `activity_level`).
+- Each row represents a time-series data entry (e.g., daily or minute-level data for a user).
+
+### 3. **Are there issues with bias or credibility in this data?**
+Yes, there are some concerns:
+- **Bias:** The dataset may be biased toward health-conscious individuals or Fitbit users, limiting its generalizability.
+- **Credibility:** While the data is from Fitbit users, it was collected through Amazon Mechanical Turk, which may affect data consistency.
+
+**ROCCC Summary:**
+- Reliable: Low
+- Original: Low
+- Comprehensive: High
+- Current: Low
+- Cited: High
+
+### 4. **How are you addressing licensing, privacy, security, and accessibility?**
+- **Licensing:** The dataset is shared under the **CC0: Public Domain** license, meaning it can be freely used without restrictions.
+- **Privacy:** The data does not contain personally identifiable information. Users provided their data anonymously with consent.
+- **Security:** The dataset is securely stored locally or in encrypted cloud storage.
+- **Accessibility:** The dataset is freely accessible on Kaggle, ensuring transparency and ease of use.
+
+### 5. **How did you verify the data’s integrity?**
+The dataset’s integrity was verified through:
+- Checking the source credibility (Kaggle and Mobius).
+- Ensuring there are no missing or inconsistent values.
+- Identifying and removing duplicates.
+- Validating the plausibility of values (e.g., no negative step counts or unrealistic heart rate values).
+
+### 6. **How does it help you answer your question?**
+This dataset provides detailed insights into user activity, sleep, and heart rate, which align closely with Bellabeat’s products and target market. By analyzing this data, trends in **smart device usage** can be identified, enabling Bellabeat to improve its products and marketing strategies.
+
+### 7. **Are there any problems with the data?**
+Yes, there are potential issues:
+- **Missing or incomplete data:** Some users might not have consistently worn their devices, leading to gaps.
+- **Bias:** The dataset represents only Fitbit users, which may not generalize to Bellabeat’s broader target audience.
+- **Outdated data:** The dataset is several years old and may not reflect current trends in device usage.
+
+---
 
 ## Key Tasks
-1. Identify the business task
-2. Consider key stakeholders
 
-## Deliverable
-A clear statement of the business task
+1. **Download and store the data appropriately.**
+- All 18 CSV files were downloaded from Kaggle and stored in a structured folder hierarchy.
 
-## Step 2: Prepare
+2. **Identify how the data is organized.**
+- Initial exploration confirmed the dataset is organized in wide format.
 
-Sršen encourages you to use public data that explores smart device users’ daily habits. She points you to a specific dataset:
-
-- [**FitBit Fitness Tracker Data**](https://www.kaggle.com/datasets/arashnic/fitbit) (CC0: Public Domain, dataset made available through Mobius): This Kaggle dataset contains personal fitness tracker data from Fitbit users. These eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information about daily activity, steps, and heart rate that can be used to explore users’ habits.
-
-Sršen tells you that this dataset might have some limitations and encourages you to consider adding another dataset to help address those limitations as you begin to work more with this data.
-
-
-#### Guiding Questions
-1. **Where is your data stored?**
-    The data is stored on Kaggle, a popular platform for sharing datasets. Specifically, it can be found on the [Fitbit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit) page. You can download the dataset directly from Kaggle to your local machine or cloud storage, depending on where you are working.
-
-2. **How is the data organized? Is it in long or wide format?**
-    The dataset is likely organized in **wide format**, where each column represents a specific feature (e.g., `steps`, `heart_rate`, `activity_level`) and each row represents a time series data entry (such as a day's worth of data for a user). In general, Fitbit datasets from platforms like this are stored in this format to make it easy to analyze time-based data for individual users or groups of users.
-
-3. **Are there issues with bias or credibility in this data? Does your data ROCCC?**
-   - **Bias:** Since the data is from Fitbit users who opted to share their information, it could be biased toward people who are already health-conscious or who are more active. The dataset may not represent the general population, which could affect the generalizability of any insights derived.
-   - **Credibility:** The data comes from a reputable source (Fitbit users who consented to share their data), which enhances its credibility. However, users might not always use the device consistently or might have different interpretations of tracking features.
-   - **ROCCC (Reliable, Original, Complete, Current, and Cited):** This dataset is **reliable** (from Fitbit), **original** (personal data collected through Fitbits), **complete** (contains various metrics for activity, sleep, heart rate), **current** (as of when it was last uploaded), and **cited** (available on Kaggle with proper attribution).
-
-4. **How are you addressing licensing, privacy, security, and accessibility?**
-   - **Licensing:** The dataset is available under the **CC0: Public Domain** license, which means it can be freely used without restrictions.
-   - **Privacy:** The dataset does not contain personally identifiable information, as users have consented to provide fitness and activity data anonymously. It's essential to ensure that privacy concerns are addressed by not sharing any personal or sensitive data.
-   - **Security:** The data itself does not present security risks, but you should store the dataset in a secure location (local machine or cloud with appropriate encryption).
-   - **Accessibility:** The dataset is publicly accessible on Kaggle, and users can download it with a Kaggle account. It's essential to ensure that any findings and analyses are shared in an accessible way for stakeholders and team members.
-
-5. **How did you verify the data’s integrity?**
-    The dataset's integrity can be verified by:
-        - **Checking the source**: Confirming that the data comes from a reliable platform like Kaggle and is maintained by a reputable user or organization.
-        - **Ensuring data consistency**: Analyzing if there are missing values, duplicates, or any obvious errors in the data entries (e.g., negative step counts, impossible heart rate values).
-        - **Cross-referencing with other sources**: If needed, you can verify some of the patterns or values by comparing them with other publicly available Fitbit datasets or reports to ensure consistency.
-
-6. **How does it help you answer your question?**
-    This dataset is directly relevant to answering your business task since it provides detailed data on **user activity**, **sleep patterns**, and **heart rate**, which are crucial aspects of wellness tracked by Fitbit devices. By analyzing this data, you can identify trends in smart device usage, particularly focusing on the behavior of users related to their health and wellness. These insights can then be applied to Bellabeat’s products like the Leaf, Time, and Spring, helping to inform marketing strategies and product development.
-
-7. **Are there any problems with the data?**
-    Possible issues with the data might include:
-        - **Incomplete or missing data**: Users might not have fully utilized their devices or might have data gaps.
-        - **Inconsistent usage**: Users may not consistently wear or use their devices, leading to uneven data for certain days.
-        - **Limited data on non-Bellabeat users**: Since this data only involves Fitbit users, it does not capture insights from people using other types of smart devices, which might limit the generalizability of the findings for Bellabeat’s diverse customer base.
-
-#### Key Tasks
-1. **Download data and store it appropriately.**
-2. **Identify how it’s organized.**
 3. **Sort and filter the data.**
+- Unnecessary columns and irrelevant rows were identified and excluded.
+
 4. **Determine the credibility of the data.**
+- The dataset's source and metadata were examined for reliability, completeness, and timeliness.
 
 
 #### Install Packages
@@ -258,25 +304,25 @@ cat("Empty columns in sleep:", sum(colSums(is.na(sleep)) == nrow(sleep)), "\n")
 
 ```{r}
 # Check for duplicates
-cat("Number of duplicate rows in daily_activity before removal:", nrow(daily_activity[duplicated(daily_activity), ]), "\n")
-cat("Number of duplicate rows in daily_calories before removal:", nrow(daily_calories[duplicated(daily_calories), ]), "\n")
-cat("Number of duplicate rows in daily_intensities before removal:", nrow(daily_intensities[duplicated(daily_intensities), ]), "\n")
-cat("Number of duplicate rows in daily_steps before removal:", nrow(daily_steps[duplicated(daily_steps), ]), "\n")
-cat("Number of duplicate rows in heartrate before removal:", nrow(heartrate[duplicated(heartrate), ]), "\n")
-cat("Number of duplicate rows in weight_log before removal:", nrow(weight_log[duplicated(weight_log), ]), "\n")
-cat("Number of duplicate rows in sleep before removal:", nrow(sleep[duplicated(sleep), ]), "\n")
+cat("Number of duplicate rows in daily_activity before removal:", nrow(daily_activity[duplicated(daily_activity),]), "\n")
+cat("Number of duplicate rows in daily_calories before removal:", nrow(daily_calories[duplicated(daily_calories),]), "\n")
+cat("Number of duplicate rows in daily_intensities before removal:", nrow(daily_intensities[duplicated(daily_intensities),]), "\n")
+cat("Number of duplicate rows in daily_steps before removal:", nrow(daily_steps[duplicated(daily_steps),]), "\n")
+cat("Number of duplicate rows in heartrate before removal:", nrow(heartrate[duplicated(heartrate),]), "\n")
+cat("Number of duplicate rows in weight_log before removal:", nrow(weight_log[duplicated(weight_log),]), "\n")
+cat("Number of duplicate rows in sleep before removal:", nrow(sleep[duplicated(sleep),]), "\n")
 
 # Remove duplicates
-daily_activity <- daily_activity[!duplicated(daily_activity), ]
-daily_calories <- daily_calories[!duplicated(daily_calories), ]
-daily_intensities <- daily_intensities[!duplicated(daily_intensities), ]
-daily_steps <- daily_steps[!duplicated(daily_steps), ]
-heartrate <- heartrate[!duplicated(heartrate), ]
-weight_log <- weight_log[!duplicated(weight_log), ]
-sleep <- sleep[!duplicated(sleep), ]
+daily_activity <- daily_activity[!duplicated(daily_activity),]
+daily_calories <- daily_calories[!duplicated(daily_calories),]
+daily_intensities <- daily_intensities[!duplicated(daily_intensities),]
+daily_steps <- daily_steps[!duplicated(daily_steps),]
+heartrate <- heartrate[!duplicated(heartrate),]
+weight_log <- weight_log[!duplicated(weight_log),]
+sleep <- sleep[!duplicated(sleep),]
 
 # Confirm duplicates removed
-cat("Number of duplicate rows in sleep after removal:", nrow(sleep[duplicated(sleep), ]), "\n")
+cat("Number of duplicate rows in sleep after removal:", nrow(sleep[duplicated(sleep),]), "\n")
 ```
 
 ```{r}
@@ -321,7 +367,7 @@ daily_calories %>%
 daily_intensities %>%
   summarise(participants = n_distinct(id))
 daily_steps %>%
-    summarise(participants = n_distinct(id))
+  summarise(participants = n_distinct(id))
 heartrate %>%
   summarise(participants = n_distinct(id))
 weight_log %>%
@@ -334,20 +380,20 @@ sleep %>%
 ```{r}
 # Key descriptive statistics
 daily_activity %>%
-select(total_steps, total_distance, sedentary_minutes, calories) %>%
-summary()
+  select(total_steps, total_distance, sedentary_minutes, calories) %>%
+  summary()
 daily_intensities %>%
-select(very_active_minutes, lightly_active_minutes, fairly_active_minutes, sedentary_minutes) %>%
-summary()
+  select(very_active_minutes, lightly_active_minutes, fairly_active_minutes, sedentary_minutes) %>%
+  summary()
 daily_calories %>%
-select(calories) %>%
-summary()
+  select(calories) %>%
+  summary()
 sleep %>%
-select(total_sleep_records, total_minutes_asleep, total_time_in_bed) %>%
-summary()
+  select(total_sleep_records, total_minutes_asleep, total_time_in_bed) %>%
+  summary()
 weight_log %>%
-select(weight_kg, bmi) %>%
-summary()
+  select(weight_kg, bmi) %>%
+  summary()
 ```
 
 
@@ -405,10 +451,18 @@ activity_steps_merged <- merge(daily_activity, daily_steps,
 Next, the resulting merged dataset is combined with the daily_sleep dataset using the id and date columns (activity_date and sleep_day). This step integrates all three datasets into a unified table for analysis.
 
 ```{r}
-merged_data<-merge(activity_steps_merged, sleep,
-                   by.x=c("id","activity_date"),
-                   by.y=c("id","sleep_day"),
-                   all=TRUE)
+merged_data <- merge(activity_steps_merged, sleep,
+                     by.x = c("id", "activity_date"),
+                     by.y = c("id", "sleep_day"),
+                     all = TRUE)
+```
+
+```{r}
+merge2 <- merge(heartrate, daily_calories,
+                by.x = "id",
+                by.y = "id",
+                all = TRUE)
+merge2
 ```
 
 
@@ -416,6 +470,16 @@ merged_data<-merge(activity_steps_merged, sleep,
 - How could this help inform the customer segments that we can market to?
 - E.g. position this more as a way to get started in walking more?
 - Or to measure steps that you're already taking?
+```{r}
+write.csv(daily_activity, "daily_activity.csv", row.names = FALSE)
+write.csv(daily_calories, "daily_calories.csv", row.names = FALSE)
+write.csv(daily_intensities, "daily_intensities.csv", row.names = FALSE)
+write.csv(daily_steps, "daily_steps.csv", row.names = FALSE)
+write.csv(heartrate, "heartrate.csv", row.names = FALSE)
+write.csv(weight_log, "weight_log.csv", row.names = FALSE)
+write.csv(sleep, "sleep.csv", row.names = FALSE)
+```
+
 
 ## Step 5: Share
 
@@ -448,9 +512,10 @@ Supporting visualizations and key findings.
 5. Refine your data visualization by applying deep attention to detail.
 
 ```{r}
-ggplot(data=daily_activity, aes(x=total_steps, y=sedentary_minutes)) + geom_point() +
+ggplot(data = daily_activity, aes(x = total_steps, y = sedentary_minutes)) +
+  geom_point() +
   geom_smooth() +
-  labs(title="Total Steps vs. Sedentary Minutes")
+  labs(title = "Total Steps vs. Sedentary Minutes")
 ```
 
 - What's the relationship between minutes asleep and time in bed?
@@ -459,9 +524,10 @@ ggplot(data=daily_activity, aes(x=total_steps, y=sedentary_minutes)) + geom_poin
 - The data shows a negative relationship between Steps and Sedentary time. This means that the more time someone spends sitting, the fewer steps they take during the day. The company should focus more on marketing to people with high Sedentary time and encourage them to start walking more and track their steps.
 
 ```{r}
-ggplot(data=sleep, aes(x=total_minutes_asleep, y=total_time_in_bed)) + geom_point() +
+ggplot(data = sleep, aes(x = total_minutes_asleep, y = total_time_in_bed)) +
+  geom_point() +
   geom_smooth() +
-  labs(title="Total Minutes Asleep vs. Total Time in Bed Minutes")
+  labs(title = "Total Minutes Asleep vs. Total Time in Bed Minutes")
 ```
 
 - What could these trends tell you about how to help market this product? Or areas where you might want to explore further?
@@ -469,16 +535,39 @@ ggplot(data=sleep, aes(x=total_minutes_asleep, y=total_time_in_bed)) + geom_poin
 - There is also a strong connection between Minutes Asleep and Time in Bed, with a nearly straight-line trend. To help users sleep better, the company could send reminders to go to sleep.
 
 ```{r}
-ggplot(data=daily_activity, aes(x=total_steps, y=calories)) + geom_point() +
-  geom_smooth() +
-  labs(title="Total Steps vs. Calories Burned")
+colnames(sleep)
 ```
 
 
 ```{r}
-ggplot(data=merged_data, aes(x=total_minutes_asleep, y=sedentary_minutes)) +
-  geom_point(color='darkblue') + geom_smooth() +
-  labs(title="Minutes Asleep vs. Sedentary Minutes")
+ggplot(data = daily_activity, aes(x = total_steps, y = calories)) +
+  geom_point() +
+  geom_smooth() +
+  labs(title = "Total Steps vs. Calories Burned")
+```
+
+
+```{r}
+colnames(daily_activity)
+```
+
+```{r}
+ggplot(data = daily_activity, aes(x = total_distance, y = calories)) +
+  geom_point() +
+  geom_smooth() +
+  labs(title = "Total Distance vs. Calories Burned")
+```
+
+
+```{r}
+ggplot(data = merged_data, aes(x = total_minutes_asleep, y = sedentary_minutes)) +
+  geom_point(color = 'darkblue') +
+  geom_smooth() +
+  labs(title = "Minutes Asleep vs. Sedentary Minutes")
+```
+
+```{r}
+write.csv(merged_data, "merged_data.csv", row.names = FALSE)
 ```
 
 - There is a clear negative relationship between Sedentary Minutes and Sleep Time.
@@ -486,7 +575,30 @@ ggplot(data=merged_data, aes(x=total_minutes_asleep, y=sedentary_minutes)) +
 - However, it's important to gather more supporting data, as correlation does not imply causation.
 
 ```{r}
-ggplot(data=daily_activity, aes(x=days)) +
-geom_point(color='darkblue') + geom_smooth() +
-labs(title="Days Frequency")
+ggplot(data = daily_activity, aes(x = days)) +
+  geom_bar(color = 'darkblue') +
+  labs(title = "Days Frequency")
 ```
+
+- We can notice that people are active on Thursday, Tuesday, Wednesday. So rest for the remaining days, we can notify them to be active on those days.
+
+```{r}
+sedentary_min <- mean(daily_activity$sedentary_minutes)
+lightly_active_min <- mean(daily_activity$lightly_active_minutes)
+fairly_active_min <- mean(daily_activity$fairly_active_minutes)
+very_active_min <- mean(daily_activity$very_active_minutes)
+sedentary_min
+lightly_active_min
+fairly_active_min
+very_active_min
+```
+
+```{r}
+pie(
+  c(sedentary_min, lightly_active_min, fairly_active_min, very_active_min),
+  labels = c("Sedentary", "Lightly Active", "Fairly Active", "Very Active"),
+  main = "Activity Levels Distribution",
+  col = rainbow(4)  # Adds colors to the slices
+)
+```
+
