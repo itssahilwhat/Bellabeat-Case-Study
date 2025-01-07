@@ -126,6 +126,20 @@ The analysis follows the **6-Step Data Analysis Process**:
 
 ---
 
+## Tableau Dashboard
+
+Explore the interactive Tableau dashboard for the Bellabeat case study:
+
+[![Bellabeat Tableau Dashboard](https://img.shields.io/badge/View-Dashboard-blue?style=for-the-badge&logo=tableau)](https://public.tableau.com/views/Bellabeat_17362536887040/Bellabeat?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+Click the button above or use the following link to access the dashboard:
+
+[https://public.tableau.com/views/Bellabeat_17362536887040/Bellabeat?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link](https://public.tableau.com/views/Bellabeat_17362536887040/Bellabeat?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+This dashboard visualizes key insights and trends identified during the analysis. Use it to explore the data interactively and gain a deeper understanding of the findings.
+
+---
+
 ## How to Use This Repository
 
 This repository contains all the resources for the Bellabeat Case Study:
