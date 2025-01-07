@@ -4,103 +4,163 @@
     <img src="Bellabeat.png" alt="Bellabeat">
 </p>
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Scenario](#scenario)
-- [Business Task](#business-task)
-- [Data Sources](#data-sources)
-- [Data Preparation](#data-preparation)
-- [Data Processing](#data-processing)
-- [Analysis](#analysis)
-- [Insights and Visualizations](#insights-and-visualizations)
-- [Recommendations](#recommendations)
-- [Conclusion](#conclusion)
+# Bellabeat Case Study
 
+This project is part of a data analysis case study where we analyze fitness tracking data to help Bellabeat improve their marketing strategy and customer engagement.
+
+---
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Business Task](#business-task)
+- [Stakeholders](#stakeholders)
+- [Bellabeat Products](#bellabeat-products)
+- [Data Sources](#data-sources)
+- [Process](#process)
+- [Insights and Recommendations](#insights-and-recommendations)
+- [How to Use This Repository](#how-to-use-this-repository)
+- [Tools and Technologies](#tools-and-technologies)
+- [License](#license)
+- [Contact](#contact)
+
+---
 
 ## Introduction
-This repository contains the Bellabeat case study, completed as part of a junior data analyst role simulation. The project focuses on analyzing smart device usage data to inform Bellabeat's marketing strategies and unlock new growth opportunities in the smart wellness technology market.
 
+Bellabeat is a health-focused company that empowers women by providing smart wellness products. Their products help track activity, sleep, stress, and health metrics, allowing users to make informed decisions about their wellness.
 
-## Scenario
-Bellabeat is a high-tech manufacturer of health-focused products for women, founded in 2013. The company develops smart devices such as wellness trackers and watches, as well as a hydration-tracking water bottle and a health analytics app.
+The company aims to expand its presence in the growing smart device market and seeks insights from fitness tracking data to guide their marketing strategy.
 
-The marketing analytics team is tasked with leveraging data to understand user behavior, identify trends, and create actionable insights for future marketing strategies.
-
-
+---
 
 ## Business Task
-- Analyze publicly available smart device data to understand user trends and behavior.
-- Focus on one Bellabeat product to derive actionable insights.
-- Present a report to the Bellabeat executive team with:
-    - Key findings
-    - Supporting visualizations
-    - High-level recommendations for the marketing strategy
 
+The main objective of this project is to analyze trends in fitness tracking data and provide actionable recommendations to improve Bellabeat's marketing strategy and customer engagement.
 
+### **Key Questions**
+
+1. What are the current trends in smart device usage?
+2. How can these trends benefit Bellabeat customers?
+3. How can these trends improve Bellabeat’s marketing strategy?
+
+---
+
+## Stakeholders
+
+- **Urška Sršen**: Cofounder and Chief Creative Officer.
+- **Sando Mur**: Cofounder and mathematician.
+- **Bellabeat Marketing Analytics Team**: Responsible for analyzing data to guide marketing strategies.
+
+---
+
+## Bellabeat Products
+
+- **Bellabeat App**: Tracks user activity, sleep, stress, menstrual cycle, and mindfulness.
+- **Leaf**: A wellness tracker that can be worn as a bracelet, necklace, or clip.
+- **Time**: A smart wellness watch with a classic design.
+- **Spring**: A smart water bottle that tracks hydration levels.
+- **Bellabeat Membership**: A subscription offering personalized wellness insights and guidance.
+
+---
 
 ## Data Sources
-- **FitBit Fitness Tracker Data**: Public domain dataset sourced from Kaggle.
-    - Contains data from 30 FitBit users, including activity, heart rate, and sleep metrics.
-    - URL: [FitBit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit)
 
+This case study uses publicly available data from fitness tracking devices. The dataset includes information about user activity, sleep, and other wellness metrics.
 
+> **Note**: The dataset does not come from Bellabeat but from a third-party source to analyze trends and generate insights.
 
-## Data Preparation
-- **Storage**: Data was stored in a structured folder with appropriate naming conventions.
-- **Format**: The dataset was in a long format, making it suitable for analysis.
-- **Verification**: Data integrity was ensured by checking for missing values, duplicates, and inconsistencies.
-- **Licensing**: The dataset is CC0 licensed, making it free for public and commercial use.
+---
 
+## Process
 
+The analysis follows the **6-Step Data Analysis Process**:
 
-## Data Processing
-1. **Tool Selection**: Data was processed using Python and Jupyter Notebook for its robust data analysis capabilities.
-2. **Cleaning Steps**:
-    - Removed missing and duplicate values.
-    - Standardized column names for readability.
-    - Ensured data types were consistent for analysis.
-3. **Transformation**:
-    - Aggregated daily data for better trend analysis.
-    - Filtered data to focus on relevant metrics: activity levels, sleep patterns, and heart rate.
+1. **Ask**
+    - Define the business task and identify key questions to address.
 
+2. **Prepare**
+    - Use publicly available fitness tracking data for analysis.
+    - Ensure data integrity and relevancy for the business task.
 
+3. **Process**
+    - Clean and transform the data for analysis.
+    - Handle missing or inconsistent data points.
 
-## Analysis
-- Key trends were identified using statistical and exploratory data analysis.
-- Visualizations were created using Python libraries like Matplotlib and Seaborn.
+4. **Analyze**
+    - Identify key trends and patterns in user behavior.
+    - Perform statistical analysis and derive insights.
 
-### Questions Answered
-1. What are some trends in smart device usage?
-2. How could these trends apply to Bellabeat customers?
-3. How could these trends influence Bellabeat's marketing strategy?
+5. **Share**
+    - Visualize findings using graphs and charts.
+    - Summarize key insights for stakeholders.
 
+6. **Act**
+    - Provide actionable recommendations for Bellabeat’s marketing strategy.
 
+---
 
-## Insights and Visualizations
-- **Activity Trends**: Users are most active during the late morning and early evening.
-- **Sleep Patterns**: The average user sleeps 6-7 hours per night; sleep quality varies significantly on weekdays vs weekends.
-- **Heart Rate Analysis**: Higher activity levels correlate with higher average heart rates.
+## Insights and Recommendations
 
-Key visualizations include:
-1. Daily activity levels and trends.
-2. Correlation between activity and heart rate.
-3. Sleep quality distribution.
+### **Key Insights**
 
+1. **Weekend Usage**: Users tend to wear fitness trackers more on weekends than weekdays.
+2. **Daily Step Goals**: Most users do not consistently meet the recommended step count of 7,500 steps/day.
+3. **Activity Diversity**: Fitness trackers are primarily used for sports-related activities, limiting their usage potential.
 
+### **Recommendations**
 
-## Recommendations
-1. **Product-Specific Campaigns**:
-    - Focus marketing efforts on the **Bellabeat Time** watch for active users.
-    - Highlight stress and sleep tracking features in campaigns.
-2. **Content Strategy**:
-    - Develop content around improving sleep quality and fitness habits.
-    - Target specific demographics active during peak hours.
-3. **Digital Marketing**:
-    - Invest in Google Ads targeting keywords like "activity tracker" and "improve sleep."
-    - Create social media campaigns showcasing user stories.
+1. **Market as a Multi-Purpose Device**
+    - Bellabeat should highlight that their products are suitable for all daily activities, including work and home, to attract a broader audience.
 
+2. **Rewards and Reminders**
+    - Integrate rewards (e.g., discounts, virtual medals) for meeting fitness goals.
+    - Send app notifications to remind users to stay active during weekdays.
 
+3. **Personalized Insights**
+    - Use AI to offer personalized fitness and wellness recommendations.
+    - Tailor suggestions based on users’ daily habits and preferences.
 
-## Conclusion
-The analysis of smart device usage trends has provided actionable insights that can help Bellabeat enhance its product offerings and marketing strategies. By focusing on user behavior patterns, Bellabeat can position itself as a leader in the wellness tech market.
+4. **Social Engagement**
+    - Introduce social challenges or group activities via the Bellabeat app to foster community engagement.
 
+---
+
+## How to Use This Repository
+
+This repository contains all the resources for the Bellabeat Case Study:
+
+1. **R Markdown File and Data Cleaning**: The main analysis file (`Data Analysis.Rmd`) provides detailed documentation of the process and for preprocessing the dataset.
+2. **HTML Report**: A rendered HTML report summarizing the findings.
+3. **Visualizations**: Charts and graphs created during the analysis.
+
+---
+
+## Tools and Technologies
+
+- **R Programming Language**: Data cleaning, analysis, and visualization.
+- **Data Spell**: IDE for R development.
+- **ggplot2**: For creating visualizations.
+- **Markdown**: For documentation and reporting.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+Feel free to use or modify the code and analysis for your own projects. Attribution to this repository is appreciated.
+
+---
+
+## Contact
+
+For any questions or suggestions, please feel free to contact:
+
+**Sahil Bhatia**
+- Email: [bhatiasahil1515@gmail.com](mailto:bhatiasahil1515@gmail.com)
+- GitHub: [Sahil Bhatia](https://github.com/itssahilwhat)
+
+---
+
+Thank you for exploring this case study! 🚀
